@@ -669,7 +669,7 @@ Everyone commits **daily from their own GitHub account**. The rubric explicitly 
 Stuck for more than 90 minutes → say so in the group, don't sink the day.
 
 **Critical-path rescue order**:
-- Sarthak stuck → Chaitanya assists (she's the ML backup)
+- Sarthak stuck → Chaitanya assists (he's the ML backup)
 - Chaitanya stuck → Sarthak assists
 - Aditya/Kritika tracks are parallel and self-contained (no rescue needed, low risk)
 

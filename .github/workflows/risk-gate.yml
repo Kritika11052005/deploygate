@@ -1,0 +1,46 @@
+name: Risk Gate Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  # C1 prototype: hardcoded risk score. Real score comes from the ML model in C2/C3.
+  # Set to "High" to demonstrate a blocked deploy, or "Low" to demonstrate an allowed deploy.
+  RISK_SCORE: "High"
+
+jobs:
+  risk-gate:
+    name: Risk Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Evaluate deployment risk
+        run: |
+          echo "Risk Score: $RISK_SCORE"
+          if [ "$RISK_SCORE" = "High" ]; then
+            echo "❌ High Risk — blocking deployment"
+            exit 1
+          elif [ "$RISK_SCORE" = "Medium" ]; then
+            echo "⚠️ Medium Risk — blocking deployment (approval required)"
+            exit 1
+          else
+            echo "✅ Low Risk — deployment allowed"
+          fi
+
+  deploy:
+    name: Deploy
+    needs: risk-gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy placeholder app
+        run: |
+          echo "🚀 Deploying application..."
+          echo "Deployment successful!"

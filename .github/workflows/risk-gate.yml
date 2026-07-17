@@ -9,7 +9,7 @@ on:
 env:
   # C1 prototype: hardcoded risk score. Real score comes from the ML model in C2/C3.
   # Set to "High" to demonstrate a blocked deploy, or "Low" to demonstrate an allowed deploy.
-  RISK_SCORE: "High"
+  RISK_SCORE: "Low"
 
 jobs:
   risk-gate:

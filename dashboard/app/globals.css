@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --background: #14161C;
+  --foreground: #EDEEF2;
+  
+  --risk-high: #E5484D;
+  --risk-medium: #F5A623;
+  --risk-low: #2FB170;
+  --brand-accent: #7C6CF0;
+  
+  --card-bg: rgba(26, 29, 38, 0.65);
+  --card-border: rgba(255, 255, 255, 0.07);
+  --card-hover-border: rgba(124, 108, 240, 0.3);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-risk-high: var(--risk-high);
+  --color-risk-medium: var(--risk-medium);
+  --color-risk-low: var(--risk-low);
+  --color-brand: var(--brand-accent);
+  
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-card-hover: var(--card-hover-border);
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: var(--card-bg);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+}
+
+.glass-panel-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: var(--card-hover-border);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Glow effects */
+.glow-high {
+  box-shadow: 0 0 20px rgba(229, 72, 77, 0.15);
+}
+
+.glow-medium {
+  box-shadow: 0 0 20px rgba(245, 166, 35, 0.15);
+}
+
+.glow-low {
+  box-shadow: 0 0 20px rgba(47, 177, 112, 0.15);
+}
+
+.glow-brand {
+  box-shadow: 0 0 20px rgba(124, 108, 240, 0.15);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(20, 22, 28, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.pulse-animation {
+  animation: pulse-subtle 2s infinite ease-in-out;
+}
